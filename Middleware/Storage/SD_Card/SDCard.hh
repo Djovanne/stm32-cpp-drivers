@@ -18,32 +18,45 @@
 #define SDMANAGER_HPP
 
 #include "fatfs.h"
+#include "GlobalDefines.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
 
-
-class SDCard {
+class SDCard
+{
 public:
 
 	SDCard(const char* rootPath = SDPath);
 
-
-
-	//inicializa o sistema de arquivos, checando se o mesmo está conectadp messe exato momento
+	// Montagem SD Card
     bool mount();
-    //Fecha o acesso ao cartão SD
     bool unmount();
-    //Calcula o espaço livre dentro do cartão
     uint32_t getFreeSpaceKB();
-    //Escreve uma String de texto diretamente no arquivo
-    bool writeLog(const char* filename, const char* data);
-    //a mesma coisa que a anterior, so que funciona parecido com um printf
-    bool printLog(const char* filename, const char* format, ...);
-    // Cria uma pasta no cartão SD
     bool createPath(const char* dirPath);
+    bool isPresent();
 
-    FRESULT getLastResult() const { return res; }
+    // Escrita SD Card
+    bool openFileForAppend(const char* filename);
+    bool writeToFile(const char* data);
+    bool printToFile(const char* format, ...);
+    bool closeFile();
+
+    bool writeLog(const char* filename, const char* data, bool apped = true);
+	bool printLog(const char* filename, const char* format, ...);
+
+	// Leitura SD Card
+
+	bool openFileForRead(const char* filename);
+	char* readLine(char* buffer, int maxLen);
+	bool isEOF();
+
+	// Escrita Binária
+	bool openFileForWriteRaw(const char* filename);
+	bool writeBytes(const uint8_t* data, UINT size, UINT* bytesWritten);
+
+
+	FRESULT getLastResult() const { return res; }
 
 private:
     FATFS fs;      // Objeto do Sistema de Arquivos
@@ -53,6 +66,9 @@ private:
 
     // Buffer interno para formatação de strings (ajuste o tamanho conforme necessidade)
     char buffer[256];
+
+    bool isMounted;
+    bool initState;
 };
 
 #endif // SDMANAGER_HPP

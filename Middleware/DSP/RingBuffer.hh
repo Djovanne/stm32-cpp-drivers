@@ -62,6 +62,8 @@ class RingBuffer : public std::array<T, N>
 		template<typename vect> T conv(const vect& u, size_t n = N);
 		// Indica se o Buffer se encheu desde sua criacao
 		bool isFull();
+		// Reinicia o indice e limpa o buffer
+		void reset();
 };
 
 template<typename T, size_t N>
@@ -113,6 +115,14 @@ T RingBuffer<T, N>::conv(const vect& u, size_t n)
 template<typename T, size_t N>
 bool RingBuffer<T, N>::isFull(){
   return full;
+}
+
+template<typename T, size_t N>
+void RingBuffer<T, N>::reset()
+{
+    std::array<T, N>::fill(T{});
+    first = 0;
+    full = false;
 }
 
 #endif
