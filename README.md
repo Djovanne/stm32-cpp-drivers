@@ -4,9 +4,9 @@ Drivers e bibliotecas, majoritariamente em C++, para o ambiente STM32CubeIDE e S
 
 Drivers e bibliotecas, majoritariamente em C++, para o ambiente STM32CubeIDE e STM32 HAL.
 
-Este repositório é uma coleção de abstrações orientadas a objetos desenvolvidas para microcontroladores STM32. O objetivo principal é trazer as vantagens do C++ (encapsulamento, tipagem forte, reuso de código) para sistemas embarcados *bare-metal*, mantendo a alta performance e o baixo *overhead* exigidos por aplicações críticas, sem a necessidade estrita de um RTOS.
+Este repositório é uma coleção de abstrações orientadas a objetos desenvolvidas para microcontroladores STM32. O objetivo principal é trazer as vantagens do C++ (encapsulamento, tipagem forte, reuso de código) para sistemas embarcados *bare-metal*, mantendo a alta performance e o baixo *overhead* exigidos por aplicações críticas, sem a necessidade estrita de um RTOS (inicialmente).
 
-Grande parte destas bibliotecas foi concebida e testada nos sistemas de aviônica e telemetria de foguetes experimentais do **Projeto Júpiter** (Escola Politécnica da USP), onde requisitos de gravação de dados em alta frequência e processamento assíncrono são fundamentais.
+Grande parte destas bibliotecas foi concebida e testada nos sistemas de aviônica e telemetria de foguetes experimentais do **Projeto Júpiter** (Escola Politécnica da USP).
 
 ## 📂 Estrutura do Repositório
 
