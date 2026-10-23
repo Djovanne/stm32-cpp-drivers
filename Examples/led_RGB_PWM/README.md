@@ -1,0 +1,11 @@
+O arquivo se baseia em um código simples usando pwm para controlar as cores de um led RGB, que se por saída digitaç apenas 6 cores. Mas controlando por PWM, conseguimos misturar as tonalidades pela intensidade média vista pelo olho de cada
+
+Para apenas fins de contextualização, a configuração é:
+
+- na aba "Clock Configuration", o clock do sistema está convencionado em 40 MHz. tenha isso em mente.
+- Para configurar o PWM, voltamos a aba "Pinout & Configuration", aba "Timers" e escolhemos o "TIM2", que é o 2º times avançado do chip (poderia ser qualquer um que tivesse 3 canais de saída, um para cada pino do led. ou então 3 timers diferentes, mas aí já é esbanjar demais).
+- para aciva-lo, em "Clock Source" selecione a fonte do clock (no caso o do barramento visto no "Clock Configuration", Internal Clock), fale o que cada canal do clock vai fazer (PWM, OC, IC e afins) no caso PWM para 3 Canais distintos, agora nos temos um sinal de PWM controlado pelo timer
+- na aba "Parameter Settings" do Timer, na aba "Conter Setting" ( que é a configuração geral do Timer), coloque o prescaler como 40 - 1 (que é o valor que vc irá dividir o clock de entrada do timer + 1, ou seja, 40 MHz / 40 = 1 MHz).
+- "Conter Period", coloque 1000 - 1 (é o valor que, quanto o timer atingir ele irá resetar a contagem, ou estourar em 1000)
+- Em "auto-reload preload", coloque enable (para as saídas voltarem ao estado inicial. Se começaram com 0, quando estourar volta para esse estado).
+- No "PWM Generation Channel x" de cada canal, a aba "pulse" é o numero em que, quando o Timer estiver ativo, ele irá inverter de sinal, e o "CH Polarity" diz qual o estado inicial da saída (ou seja, para o caso CH = High, o pulso irá inverter o sinal quando o valor estiver em Pulse e voltar ao valor inicial quando estourar o timer, ou seja, criamos um PWM de 1MHz/1000 = 1kHz em decorrencia do estouro do Timer, e com valor eficaz dito por pulse/10 %), como o valor que ficaria fixo aí é mudado pelo código (sobreescrevendo o valor no Registrador que ficaria tal número), não é preciso colocar um valor fixo aqui.

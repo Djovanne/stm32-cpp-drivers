@@ -1,0 +1,5 @@
+../Application/M95P32.c:10:19:M95P32_Check	16	static
+../Application/M95P32.c:37:9:M95P32_ReadStatus	16	static
+../Application/M95P32.c:52:19:M95P32_WriteOption	24	static
+../Application/M95P32.c:64:19:M95P32_ReadData	32	static
+../Application/M95P32.c:84:19:M95P32_WriteData	56	static

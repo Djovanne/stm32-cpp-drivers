@@ -1,0 +1,7 @@
+../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usbd_msc_if.c:190:8:STORAGE_Init	16	static
+../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usbd_msc_if.c:215:8:STORAGE_GetCapacity	56	static
+../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usbd_msc_if.c:243:8:STORAGE_IsReady	16	static
+../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usbd_msc_if.c:277:8:STORAGE_IsWriteProtected	16	static
+../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usbd_msc_if.c:289:8:STORAGE_Read	32	static
+../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usbd_msc_if.c:316:8:STORAGE_Write	32	static
+../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App/usbd_msc_if.c:344:8:STORAGE_GetMaxLun	4	static
